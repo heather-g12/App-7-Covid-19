@@ -1,0 +1,306 @@
+<!DOCTYPE html> 
+<html> 
+<!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
+ 
+THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
+ 
+ 
+Authors in chronological order of contribution:
+Tim Riedel
+Heather Goldbeck
+ 
+Further Information:
+http://cns.utexas.edu/fri
+ 
+Research Educator:
+Timothy Riedel
+triedel@utexas.edu
+ 
+Brief Description of Goal of Code:
+This website will take a user through a series of questions in order to determine the probability that they have a certain illness.
+The app will compare their input of symptoms with sympotoms common to Covid-19, the flu, a common cold, and allergies. 
+ 
+Known Issues:
+https://www.w3schools.com/w3css/default.asp
+https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
+-->
+	
+   <head> 
+      <title>Hello World</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+
+<script> //this section of code is written in javascript
+        var allergy_count = 0; //creates a variable that collects the answers for responses in the allergy category and sets the initial value to 0
+        var cold_count = 0; //creates a variable that collects the answers for responses in the cold category and sets the initial value to 0
+	var covid_count = 0; //creates a variable that collects the answers for responses in the Covid-19 category and sets the initial value to 0
+	var flu_count = 0; //creates a variable that collects the answers for responses in the flu category and sets the initial value to 0
+
+        function allergyAdd(){ //this is a function which adds up all of the responses in the allergy category
+            allergy_count = allergy_count + 1;
+		//alert(allergy_count);
+        }
+
+        function coldAdd(){ //this is a function that adds up all the the responses in the cold category
+            cold_count = cold_count + 1;
+        }
+	
+	function covidAdd(){ //this is a function that adds up all the the responses in the Covid-19 category
+            covid_count = covid_count + 1;
+        }
+	
+	function fluAdd(){ //this is a function that adds up all the the responses in the flu category
+            flu_count = flu_count + 1;
+        }
+	
+
+  </script>
+
+
+<!-- this section of code sets up the dimesions and design of the webpage-->
+<style> 
+.body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+
+<!--This creates the first page of our website-->
+<body> 
+<div id="header" class="w3-container w3-flat-carrot"> <!--Creates a header on the home page that reads "Cold or Coronavirus?-->
+	<h1>Cold or Coronavirus?</h1>
+</div>
+	
+<div id="content" class="w3-container"> <!--This divides the homepage to display the section of text found below-->
+	<p>Are you feeling under the weather, but not quite sure what your symotoms are the result of? Answer a few short questions to find out!</p>
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a> <!--Creates a button that says "Get Started" and takes the user to the page for question 1-->
+	
+	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p> <!--This is a disclaimer on the homepage-->
+
+<div class="page" id="one"> <!--Creates another division of the page to only show the first question-->
+	<div id="header" class="w3-container w3-flat-carrot">
+		<h1>Question 1</h1> <!--Header reads "Question 1"-->
+	</div>
+	
+    	<div id="content" class="w3-container">
+        	<p>How long have you been experiencing symptoms?</p>  <!--This question appears as text on the screen-->  
+		<a href="#two" onclick="allergyAdd();" class="w3-btn w3-black w3-round"> Several Weeks </a> <!--Creates a "Several Weeks" button which adds to the variable allergy_count by calling the allergyAdd() function. Takes the user to the next question.-->
+		<a href="#two" oncLick="coldAdd();" class="w3-btn w3-black w3-round"> Less than 14 Days </a> <!--Creates a "Less than 14 days" button which adds to the variable cold_count by calling the coldAdd() function. Takes the user to the next question.-->
+		<a href="#two" oncLick="covidAdd();" class="w3-btn w3-black w3-round"> 7-25 Days </a> <!--Creates a "7-25 days" button which adds to the variable covid_count by calling the covidAdd() function. Takes the user to the next question.-->
+		<a href="#two" oncLick="fluAdd();" class="w3-btn w3-black w3-round"> 7-14 Days </a> <!--Creates a "7-14 days" button which adds to the variable flu_count by calling the fluAdd() function. Takes the user to the next question.-->
+	</div> 
+</div>
+
+<div class="page" id="two"> <!--Creates a page for the second question-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 2</h1> <!--header reading "Question 2"-->
+	</div>
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a fever?</p> <!-- Second question written as text-->
+		<a href="#three" onclick="coldAdd();" class="w3-btn w3-black w3-round"> Yes, but only for a short period </a> <!--Creates a "yes, but only for a short period" button which adds to the variable cold_count by calling the coldAdd() function. Takes the user to the next question.-->
+		<a href="#three" onclick="allergyAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable allergy_count by calling the allergyAdd() function. Takes the user to the next question.-->
+		<a href="#two" onclick="covidAdd(); fluAdd();" class="w3-btn w3-black w3-round">  </a> <!--Creates a "yes" button which adds to the variables covid_count and flu_count by calling the covidAdd() and fluAdd() functions. Takes the user to the next question.-->
+	</div>
+
+</div>	<!--ends page for Question 2-->
+	
+<div class="page" id="three"> <!--Creates division for page showing the 3 question-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 3</h1> <!--Header reads "Question 3"-->
+	</div>
+	
+	<div id="content" class="w3-container"> 
+		<p>Do you have a sore throat?</p> <!--Question presented as text on screen below the header-->
+		<a href="#four" onclick="coldAdd(); covidAdd(); fluAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> Yes </a> <!--Creates a "yes" button which adds to the variable cold_count by calling the coldAdd() function. Takes the user to the next question.-->
+		<a href="#four" onclick="allergyAdd(); covidAdd(); fluAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variables allergy_count, covid_count, and flu_count by calling their respective functions. Takes the user to the next question.-->
+	</div> 
+</div> <!--ends page for Question 3-->
+	
+<div class="page" id="four"> <!--Creates page for question 4-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 4</h1> <!--header reads "question 4"-->
+	</div> <!--separates header and rest of page-->
+	
+	<div id="content" class="w3-container">
+		<p>Do you have a cough?</p> <!--prints out text on screen below header-->
+		<a href="#five" onclick="covidAdd(); fluAdd();" class="w3-btn w3-black w3-round"> Dry Cough </a> <!--Creates a "Yes" button which adds to the variable covid_count and flu_count by calling their respective functions. Takes the user to the next question.-->
+		<a href="#five" onclick="coldAdd();" class="w3-btn w3-black w3-round"> Mild Cough </a> <!--Creates a "mild cough" button which adds to the variable cold_count by calling the coldAdd() function. Takes the user to the next question.-->
+		<a href="#five" onclick="allergyAdd();" class="w3-btn w3-black w3-round"> Yes, it triggered asthma </a> <!--Creates a "Yes, it triggered asthma" button which adds to the variable allergy_count by calling the allergyAdd() function. Takes the user to the next question.-->
+		<a href="#five" onclick="allergyAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "No" button which adds to the variable allergy_count by calling the allergyAdd() function. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 4-->
+	
+<div class="page" id="five"> <!--creates a page for question 5-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 5</h1> <!--creates header that reads "Question 5"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page--> 
+		<p>Do you feel aches or pains?</p> <!--text printed below header-->
+		<a href="#six" onclick="coldAdd(); fluAdd(); covidAdd();" class="w3-btn w3-black w3-round"> Yes </a> <!--Creates a "yes" button which adds to the variable cold_count, flu_count, covid_count by calling their respective functions. Takes the user to the next question.-->
+		<a href="#six" onclick="allergyAdd(); covidAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable allergy_count and covid_count by calling their respective functions. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 5-->
+	
+<div class="page" id="six"> <!--creates a page for question 6-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 6</h1> <!--creates header that reads "Question 6"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page-->
+		<p>Are you experiencing shortness of breath?</p> <!--text printed below header-->
+		<a href="#seven" onclick="covidAdd();" class="w3-btn w3-black w3-round"> Yes </a> <!--Creates a "yes" button which adds to the variable covid_count by calling the covidAdd() function. Takes the user to the next question.-->
+		<a href="#seven" onclick="coldAdd(); fluAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable cold_count, flu_count, and allergy_count by calling their respective functions. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 6-->
+
+<div class="page" id="seven"> <!--creates a page for question 7-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 7</h1> <!--creates header that reads "Question 7"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page-->
+		<p>Have you been sneezing?</p> <!--text printed below header-->
+		<a href="#eight" onclick="coldAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> Yes </a> <!--Creates a "yes" button which adds to the variable allergy_count and cold_count by calling their respective functions. Takes the user to the next question.-->
+		<a href="#eight" onclick="covidAdd(); fluAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable covid_count and flu_count by calling their respective functions. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 7-->
+
+<div class="page" id="eight"> <!--creates a page for question 8-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 8</h1> <!--creates header that reads "Question 8"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page-->
+		<p>Is your nose runny or stuffy?</p> <!--text printed below header-->
+		<a href="#nine" onclick="coldAdd(); fluAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> Yes </a> <!--Creates a "yes" button which adds to the variable cold_count, flu_count, and allergy_count by calling their respective functions. Takes the user to the next question.-->
+		<a href="#nine" onclick="covidAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable covid_count by calling the covidAdd() function. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 8-->
+
+<div class="page" id="nine"> <!--creates a page for question 9-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 9</h1> <!--creates header that reads "Question 9"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page-->
+		<p>Are you experiencing headaches?</p> <!--text printed below header-->
+		<a href="#ten" onclick="covidAdd(); fluAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> Yes </a> <!--Creates a "yes" button which adds to the variable covid_count, flu_count, and allergy_count by calling their respective functions. Takes the user to the next question.-->
+		<a href="#ten" onclick="coldAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable cold_count by calling the coldAdd() function. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 9-->
+
+<div class="page" id="ten"> <!--creates a page for question 10-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 10</h1> <!--creates header that reads "Question 10"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page-->
+		<p>Do you have diarrhea? If yes, are you a child?</p> <!--text printed below header-->
+		<a href="#eleven" onclick="covidAdd();" class="w3-btn w3-black w3-round"> Yes. Not a child. </a> <!--Creates a "Yes. Not a child." button which adds to the variable covid_count by calling the covidAdd() function. Takes the user to the next question.-->
+		<a href="#eleven" onclick="fluAdd();" class="w3-btn w3-black w3-round"> Yes. A child. </a> <!--Creates a "Yes. A child." button which adds to the variable flu_count by calling the fluAdd() function. Takes the user to the next question.-->
+		<a href="#eleven" onclick="coldAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable cold_count and allergy_count by calling the coldAdd() and allergyAdd() functions. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 10-->
+
+<div class="page" id="eleven"> <!--creates a page for question 11-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Question 11</h1> <!--creates header that reads "Question 11"-->
+	</div>
+	
+	<div id="content" class="w3-container"> <!--separates header from the rest of the page-->
+		<p>Are you feeling weak or tired?</p> <!--text printed below header-->
+		<a href="#results" onclick="covidAdd(); fluAdd(); coldAdd(); allergyAdd();" class="w3-btn w3-black w3-round"> Yes</a> <!--Creates a "yes" button which adds to the variable flu_count, cold_count, and allergy_count by calling their respective functions. Takes the user to the next question.-->
+		<a href="#results" onclick="coldAdd(); allergyAdd(); covidAdd()" class="w3-btn w3-black w3-round"> No </a> <!--Creates a "no" button which adds to the variable covid_count by calling the covidAdd() function. Takes the user to the next question.-->
+	</div>
+</div> <!--ends page for question 11-->
+	
+<div class="page" id="results"> <!--begins page for results-->
+	<div class="w3-container w3-flat-carrot">
+		<h1>Results</h1> <!--header reads "Results"-->
+	</div> <!--separates header from the rest of the page-->
+	
+	<!--
+	<!-- Begins code for column chart. Code is written in JavaScript.
+	<script>
+	window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", { //creates a variable called chart that creates a canvas to display the column chart
+		//code below sets the style\colors of chart
+		animationEnabled: true,
+		theme: "light2", 
+		title:{
+			text: "What Your Symptoms Indicate" //title of column chart
+		},
+		axisY: {
+			title: "Percent Likelihood of Infection" //title of y-axis
+		},
+		data: [{        
+			type: "column",  
+			showInLegend: true, //displays the x-axis title
+			legendMarkerColor: "grey",
+			legendText: "Illness", //title of x-axis
+			dataPoints: [      
+				{ y: coldPercent, label: "Cold" }, //column for cold is set equal to the percentage calculated in results
+				{ y: covidPercent,  label: "Covid-19" }, //column for covid-19 is set equal to the percentage calculated in results
+				{ y: fluPercent,  label: "Flu" }, //column for flu is set equal to percentage calculated in results
+				{ y: allergyPercent,  label: "Seasonal Allergies" }, //column for allergies is set equal to the percentage calculated in results
+			]
+		}]
+	});
+	chart.render();
+	}
+	</script>
+	</head>
+	<body>
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div> <!-- Sets the dimensions for the canvas with the name "chartContainer".
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> --> <!--ends code for column chart. Closes out JavaScript code --> 	
+	
+		
+	<script> //indicates that this code is being written in javascript
+	function showResults() { //function called showResults created. This does the math required to make the allergy or cold counts into percentages.
+		var resultText = document.getElementById("results"); //creates a variable called resultText which prints the results of the user's response on the results page.
+		var total = allergy_count + cold_count + covid_count + flu_count; //variable that creates the total count of responses by adding the allergy count and cold count.
+		var allergyPercent = (((allergy_count)/(total))*100); //turns the allergy count into a percentage by dividing the allergy count by the toal and dividing by 100.
+		var coldPercent = (((cold_count)/(total))*100); //turns the cold count into a percentage by dividing the cold count by the total and multiplying by 100.
+		var covidPercent = (((covid_count)/(total))*100); //turns the covid count into a percentage by dividing the covid count by the total and multiplying by 100.
+		var fluPercent = (((flu_count)/(total))*100); //turns the flu count into a percentage by dividing the flu count by the total and multiplying by 100.
+		resultText.innerHTML = "Probability it is allergies = " + allergyPercent + "%" + "<br> Probability it is a cold = " + coldPercent + "%" + "<br> Probability it is Covid-19 = " +
+			covidPercent + "%" + "<br> Probability it is the flu = " + fluPercent + "%" +"<br> Ideally on this page a column chart would print out with bars matching the percentages that get been calculated." + 
+			"There would be four columns on the chart, one for each variable. The height of the column would match the percent likelihood of having the illness."; //Prints out a string of text that combines the numbers retrieved mathematically with the words "probability it is a cold/allerigies/covid-19/flu"-->
+	}
+	</script> <!--ends code written in javascript-->
+	
+	<a href="#results" onclick="showResults();" class="w3-btn w3-black w3-round"> Show Results </a> <!--creates a button that says show results which calls the function showResults(). The results are then printed out onto the page-->
+
+	
+</div> <!--ends the results page-->
+		
+<footer class="w3-bottom w3-container w3-flat-carrot"> <!--creates a footer that reads "DIY!" on the bottom of the webpage-->
+	<p>DIY!</p>
+</footer>
+
+</body>
+</html> <!--ends the code for the webpage-->
